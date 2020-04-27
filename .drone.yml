@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-  - name: docker  
+  - name: github
     image: plugins/docker
     settings:
       registry: docker.pkg.github.com
@@ -10,4 +10,12 @@ steps:
       username: hsmtkk
       password:
         from_secret: GIT_HUB_TOKEN
+      auto_tag: true
+  - name: dockerhub
+    image: plugins/docker
+    settings:
+      repo: hsmtkk/hello-node
+      username: hsmtkk
+      password:
+        from_secret: DOCKER_HUB_TOKEN
       auto_tag: true
